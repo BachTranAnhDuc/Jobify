@@ -1,25 +1,22 @@
 import React from "react";
-import Landing from "./pages/Landing";
-import styled from "styled-components";
-
-const Button = styled.button`
-  background: red;
-  color: white;
-  font-size: 1rem;
-`;
-const ButtonSecond = styled.button`
-  background: red;
-  color: white;
-  font-size: 1rem;
-`;
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Dashboard, Landing, Error, Register } from "./pages";
 
 const App = () => {
   return (
-    <div className="App">
-      {/* <h1>Jobify</h1>
-      <Button>Click me</Button> */}
-      <Landing></Landing>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to={"/"}>Dashboard</Link>
+        <Link to={"/register"}>Register</Link>
+        <Link to={"/landing"}>Landing</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Dashboard></Dashboard>}></Route>
+        <Route path="/landing" element={<Landing></Landing>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="*" element={<Error></Error>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
