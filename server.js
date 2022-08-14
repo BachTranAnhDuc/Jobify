@@ -4,6 +4,8 @@ const app = express();
 import dotevn from 'dotenv';
 dotevn.config();
 
+import 'express-async-errors';
+
 import morgan from 'morgan';
 
 // database
@@ -30,6 +32,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobRouter);
 
 app.use(notFoundMiddleware);
+app.use(errorHandleMiddleware);
 
 const port = process.env.PORT || 5000;
 
