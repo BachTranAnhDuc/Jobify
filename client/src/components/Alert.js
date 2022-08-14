@@ -1,7 +1,10 @@
 import React from 'react';
+import { useGlobalContext } from '../context/appContext';
 
 const Alert = () => {
-  return <div className="alert alert-success">Alert goes here</div>;
+  const { alertType, alertText } = useGlobalContext();
+
+  return <div className={`alert alert-${alertType}`}>{alertText}</div>;
 };
 
 export default Alert;
